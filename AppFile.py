@@ -37,7 +37,7 @@ def convert_df_to_excel(df):
     processed_data = output.getvalue()
     return processed_data
 
-st.title("AKAS News Search App")
+st.title("AKAS News Search")
 
 keyword = st.text_input("Enter a keyword to search for news:")
 
