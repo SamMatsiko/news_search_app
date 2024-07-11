@@ -2,7 +2,6 @@ import streamlit as st
 import requests
 import pandas as pd
 from io import BytesIO
-from textblob import TextBlob
 from afinn import Afinn
 import matplotlib.pyplot as plt
 
