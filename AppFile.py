@@ -72,9 +72,8 @@ if keywords_input:
 
         # Convert URLs to clickable links in the DataFrame
         df['URL'] = df['URL'].apply(lambda x: x.replace('news link', '<b>news link</b>'))
-        
-# Add CSS style for no line breaks
-        st.markdown(
+
+st.markdown(
             """
             <style>
             table {
@@ -86,9 +85,25 @@ if keywords_input:
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
+            th:nth-child(1), td:nth-child(1) {  /* Title column */
+                width: 200px;
+            }
+            th:nth-child(2), td:nth-child(2) {  /* Description column */
+                width: 300px;
+            }
+            th:nth-child(4), td:nth-child(4) {  /* Published At column */
+                white-space: normal;
+            }
+            th:nth-child(5), td:nth-child(5) {  /* Source column */
+                white-space: normal;
+            }
             </style>
             """, unsafe_allow_html=True
         )
+
+        
+        
+
 
 
         df = df.to_html(escape=False)
