@@ -44,7 +44,7 @@ if keywords_input:
     st.write(f"Results for keywords in {search_type.lower()}: {', '.join(keywords)}")
     
     search_in_title = search_type == "Title"
-    news_results = fetch_news(search_in_title,keywords )
+    news_results = fetch_news(keywords,search_in_title )
     
     if news_results:
         articles_data = [{
