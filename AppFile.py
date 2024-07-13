@@ -46,21 +46,6 @@ if keywords_input:
     
     search_in_title = search_type == "Title"
     news_results = fetch_news(keywords, search_in_title)
-
-if keywords_input:
-    keywords = [keyword.strip() for keyword in keywords_input.replace(',', ' ').split()]
-    st.write(f"Results for keywords in {search_type.lower()}: {', '.join(keywords)}")
-    
-    search_in_title = search_type == "Anywhere"
-    news_results = fetch_news(keywords, search_in_title)
-
-
-if keywords_input:
-    keywords = [keyword.strip() for keyword in keywords_input.replace(',', ' ').split()]
-    st.write(f"Results for keywords in {search_type.lower()}: {', '.join(keywords)}")
-    
-    search_in_title = search_type == "Title"
-    news_results = fetch_news(keywords,search_in_title )
     
     if news_results:
         articles_data = [{
