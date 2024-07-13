@@ -96,10 +96,10 @@ if keywords_input:
             th:nth-child(5), td:nth-child(5) {  /* Description */
                 width: 30%;
             }
-            th:nth-child(5), td:nth-child(6) {  /* URL */
+            th:nth-child(6), td:nth-child(6) {  /* URL */
                 width: 15%;
             }
-            th:nth-child(5), td:nth-child(7) {  /* Sentiment */
+            th:nth-child(7), td:nth-child(7) {  /* Sentiment */
                 width: 5%;
             }
             </style>
