@@ -85,7 +85,7 @@ if keywords_input:
                 text-overflow: ellipsis;
             }
             th:nth-child(1), td:nth-child(1) {  /* Title column */
-                width: 30%;
+                width: 10%;
             }
             th:nth-child(2), td:nth-child(2) {  /* Description column */
                 width: 30%;
@@ -94,6 +94,9 @@ if keywords_input:
                 width: 30%;
             }
             th:nth-child(5), td:nth-child(5) {  /* Source column */
+                width: 30%;
+            }
+            th:nth-child(5), td:nth-child(5) {  /* Sentiment */
                 width: 30%;
             }
             </style>
