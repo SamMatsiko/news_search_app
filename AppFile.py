@@ -102,10 +102,10 @@ if keywords_input:
                 width: 40%;
             }
             th:nth-child(5), td:nth-child(5) {  /* Sentiment */
-                width: 6%;
-            }
-            th:nth-child(5), td:nth-child(5) {  /* Sentiment */
                 width: 25%;
+            }
+            th:nth-child(6), td:nth-child(6) {  /* Sentiment */
+                width: 6%;
             }
             
 
