@@ -59,12 +59,15 @@ if keyword:
         df=df[df['Source']!='[Removed]']        
         df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]
 
-        # Add a select box for news outlet filter
+
+
+
+        # Add a multiselect for news outlet filter
         news_outlets = df['Source'].unique().tolist()
-        news_outlet = st.selectbox('Select a news outlet to filter:', ['All'] + news_outlets)
+        selected_outlets = st.multiselect('Select news outlets to filter:', ['All'] + news_outlets, default=['All'])
         
-        if news_outlet != 'All':
-            df = df[df['Source'] == news_outlet]
+        if 'All' not in selected_outlets:
+            df = df[df['Source'].isin(selected_outlets)]
         
         st.dataframe(df)
 
