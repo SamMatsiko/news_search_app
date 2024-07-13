@@ -90,22 +90,22 @@ if keywords_input:
 
             }
             th:nth-child(1), td:nth-child(1) {  /* Index */
-                width: 5%;
+                width: 10%;
             }
             th:nth-child(2), td:nth-child(2) {  /* Source */
                 width: 15%;
             }
             th:nth-child(3), td:nth-child(3) {  /* Title */
-                width: 15%;
+                width: 10%;
             }
             th:nth-child(4), td:nth-child(4) {  /* URL */
-                width: 30%;
-            }
-            th:nth-child(5), td:nth-child(5) {  /* Sentiment */
-                width: 20%;
+                width: 40%;
             }
             th:nth-child(5), td:nth-child(5) {  /* Sentiment */
                 width: 15%;
+            }
+            th:nth-child(5), td:nth-child(5) {  /* Sentiment */
+                width: 10%;
             }
             
 
