@@ -60,11 +60,8 @@ if keywords_input:
         
         df = pd.DataFrame(articles_data)
         df['Published At'] = pd.to_datetime(df['Published At'])
-        df['Date'] = df['Published At'].dt.date
-        df=df.drop(columns=['Published At'])
-        df=df[df['Source']!='[Removed]']   
-        df=df.drop(columns=['News URL'])
-        df=df.drop(columns=['Description'])
+        df['Date'] = df['Published At'].dt.date        
+        df=df[df['Source']!='[Removed]']                  
         df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]       
 
         # Add a multiselect for news outlet filter
@@ -77,6 +74,7 @@ if keywords_input:
 
         # Convert URLs to clickable links in the DataFrame
         df['URL'] = df['URL'].apply(lambda x: x.replace('news link', '<b>news link</b>'))
+        df=df[['Source','Date','Title','URL','Sentiment']]
         st.markdown(
             """
             <style>
