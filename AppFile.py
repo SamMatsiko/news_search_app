@@ -52,14 +52,15 @@ if keywords_input:
             'Published At': article['publishedAt'],
             'Title': article['title'],
             'Description': article['description'],
-            #'URL': article['url']  
+            'News URL': article['url']  
             'URL': f'<a href="{article["url"]}" target="_blank">news link</a>'          
                       
         } for article in news_results]
         
         
         df = pd.DataFrame(articles_data)
-        df=df[df['Source']!='[Removed]']        
+        df=df[df['Source']!='[Removed]']   
+        df=df.drop(columns=['News URL'])
         df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]        
         # Add a multiselect for news outlet filter
         news_outlets = df['Source'].unique().tolist()
@@ -129,7 +130,7 @@ if keywords_input:
         st.pyplot(fig)
 
         # Convert DataFrame to Excel and add download button
-        exceldata=df[['Source','Date','Title','URL','Sentiment']]
+        exceldata=df[['Source','Date','Title','News URL','Sentiment']]
         excel_data = convert_df_to_excel(exceldata)
         st.download_button(
             label="Download data as Excel",
