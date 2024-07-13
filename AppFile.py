@@ -58,7 +58,7 @@ if keywords_input:
         } for article in news_results]
         
         
-        df = pd.DataFrame(articles_data).reset_index()
+        df = pd.DataFrame(articles_data)
         df['Published At'] = pd.to_datetime(df['Published At'])
         df['Publication Date'] = df['Published At'].dt.date        
         df=df[df['Source']!='[Removed]']                  
@@ -74,7 +74,7 @@ if keywords_input:
 
         # Convert URLs to clickable links in the DataFrame
         df['News Link'] = df['URL'].apply(lambda x: x.replace('news link', '<b>news link</b>'))
-        df=df[['Source','Publication Date','Title','News Link','Sentiment']]
+        df=df[['Source','Publication Date','Title','News Link','Sentiment']].reset_index()
 
         # Pagination variables
         page_size = 10
