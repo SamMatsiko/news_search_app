@@ -77,7 +77,7 @@ if keywords_input:
         date_counts = df['Date'].value_counts().sort_index()
         
         # Calculate average sentiment per day
-        daily_sentiment = df.groupby('Date')['Sentiment Polarity'].mean()
+        daily_sentiment = df.groupby('Date')['Sentiment'].mean()
 
         st.subheader("Volume of News Articles and Average Sentiment Over Time")
         fig, ax = plt.subplots(2, 1, figsize=(10, 12), sharex=True)
@@ -91,8 +91,8 @@ if keywords_input:
         # Average sentiment plot
         ax[1].plot(daily_sentiment.index, daily_sentiment.values, marker='o', linestyle='-', color='g')
         ax[1].set_xlabel('Date')
-        ax[1].set_ylabel('Average Sentiment Polarity')
-        ax[1].set_title('Average Sentiment Polarity Over Time')
+        ax[1].set_ylabel('Average Sentiment')
+        ax[1].set_title('Average Sentiment Over Time')
         ax[1].grid(True)
 
         plt.xticks(rotation=45)
