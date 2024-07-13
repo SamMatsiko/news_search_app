@@ -61,6 +61,7 @@ if keywords_input:
         df = pd.DataFrame(articles_data)
         df=df[df['Source']!='[Removed]']   
         df=df.drop(columns=['News URL'])
+        df=df.drop(columns=['Description'])
         df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]        
         # Add a multiselect for news outlet filter
         news_outlets = df['Source'].unique().tolist()
@@ -90,18 +91,16 @@ if keywords_input:
             th:nth-child(2), td:nth-child(2) {  /* Source */
                 width: 15%;
             }
-            th:nth-child(4), td:nth-child(4) {  /* Title */
+            th:nth-child(3), td:nth-child(3) {  /* Title */
                 width: 30%;
             }
-            th:nth-child(5), td:nth-child(5) {  /* Description */
+            th:nth-child(4), td:nth-child(4) {  /* URL */
                 width: 30%;
             }
-            th:nth-child(6), td:nth-child(6) {  /* URL */
+            th:nth-child(5), td:nth-child(5) {  /* Sentiment */
                 width: 15%;
             }
-            th:nth-child(7), td:nth-child(7) {  /* Sentiment */
-                width: 5%;
-            }
+
             </style>
             """, unsafe_allow_html=True
         )
