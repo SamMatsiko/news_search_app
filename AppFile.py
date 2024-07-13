@@ -81,7 +81,7 @@ if keywords_input:
             table {
                 width: 100%;
                 table-layout: fixed;
-                margin:20px;
+                margin:100px;
             }
             th, td {
                 white-space: nowrap;
