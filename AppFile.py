@@ -86,19 +86,19 @@ if keywords_input:
                 text-overflow: ellipsis;
             }
             th:nth-child(1), td:nth-child(1) {  /* Index */
-                width: 5%;
+                width: 10%;
             }
             th:nth-child(2), td:nth-child(2) {  /* Source */
-                width: 15%;
+                width: 20%;
             }
             th:nth-child(3), td:nth-child(3) {  /* Title */
-                width: 50%;
+                width: 25%;
             }
             th:nth-child(4), td:nth-child(4) {  /* URL */
-                width: 15%;
+                width: 40%;
             }
             th:nth-child(5), td:nth-child(5) {  /* Sentiment */
-                width: 15%;
+                width: 5%;
             }
 
             </style>
