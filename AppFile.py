@@ -38,7 +38,7 @@ def convert_df_to_excel(df):
 st.title("News Search App")
 
 keywords_input = st.text_input("Enter keywords to search for news (separated by spaces or commas):")
-search_type = st.radio("Search in:", ("Article", "Headline"), index=0)  # Default to "Anywhere" and place it first
+search_type = st.radio("Search in:", ("Anywhere", "Title"), index=0)  # Default to "Anywhere" and place it first
 
 if keywords_input:
     keywords = [keyword.strip() for keyword in keywords_input.replace(',', ' ').split()]
