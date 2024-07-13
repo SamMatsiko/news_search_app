@@ -99,7 +99,8 @@ if keywords_input:
         st.pyplot(fig)
 
         # Convert DataFrame to Excel and add download button
-        excel_data = convert_df_to_excel(df)
+        exceldata=df[['Source','PublishedAt','Title','URL','Sentiment']]
+        excel_data = convert_df_to_excel(exceldata)
         st.download_button(
             label="Download data as Excel",
             data=excel_data,
