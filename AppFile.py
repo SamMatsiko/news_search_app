@@ -72,8 +72,7 @@ if keywords_input:
 
         # Convert URLs to clickable links in the DataFrame
         df['URL'] = df['URL'].apply(lambda x: x.replace('news link', '<b>news link</b>'))
-
-st.markdown(
+        st.markdown(
             """
             <style>
             table {
@@ -100,6 +99,8 @@ st.markdown(
             </style>
             """, unsafe_allow_html=True
         )
+
+
 
         
         
