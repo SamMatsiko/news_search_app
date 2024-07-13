@@ -86,10 +86,10 @@ if keywords_input:
                 text-overflow: ellipsis;
             }
             th:nth-child(1), td:nth-child(1) {  /* Index */
-                width: 10%;
+                width: 5%;
             }
             th:nth-child(2), td:nth-child(2) {  /* Source */
-                width: 20%;
+                width: 15%;
             }
             th:nth-child(3), td:nth-child(3) {  /* Title */
                 width: 25%;
@@ -98,8 +98,12 @@ if keywords_input:
                 width: 40%;
             }
             th:nth-child(5), td:nth-child(5) {  /* Sentiment */
+                width: 10%;
+            }
+            th:nth-child(5), td:nth-child(5) {  /* Sentiment */
                 width: 5%;
             }
+            
 
             </style>
             """, unsafe_allow_html=True
