@@ -80,6 +80,7 @@ if keywords_input:
         df = pd.DataFrame(articles_data)  # Recreate DataFrame for further analysis without HTML tags
         df['Published At'] = pd.to_datetime(df['Published At'])
         df['Date'] = df['Published At'].dt.date
+        df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]   
         date_counts = df['Date'].value_counts().sort_index()
 
 
