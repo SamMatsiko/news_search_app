@@ -75,53 +75,6 @@ if keywords_input:
         # Convert URLs to clickable links in the DataFrame
         df['URL'] = df['URL'].apply(lambda x: x.replace('news link', '<b>news link</b>'))
         df=df[['Source','Date','Title','URL','Sentiment']]
-        '''
-        st.markdown(
-            """
-            <style>
-            table {
-                width: 100%;
-                table-layout: fixed;
-                margin:1px;
-            }
-            th, td {
-                padding: 10px; /* Add padding to table cells */
-                text-align: left; /* Align text to the left */
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                
-
-            }
-            th:nth-child(1), td:nth-child(1) {  /* Index */
-                width: 7%;
-            }
-            th:nth-child(2), td:nth-child(2) {  /* Source */
-                width: 20%;
-            }
-            th:nth-child(3), td:nth-child(3) {  /* Title */
-                width: 15%;
-            }
-            th:nth-child(4), td:nth-child(4) {  /* URL */
-                width: 40%;
-            }
-            th:nth-child(5), td:nth-child(5) {  /* Sentiment */
-                width: 10%;
-            }
-            th:nth-child(6), td:nth-child(6) {  /* Sentiment */
-                width: 8%;
-            }
-            
-
-            </style>
-            """, unsafe_allow_html=True
-        )
-        '''
-
-
-
-        
-        
 
 
 
