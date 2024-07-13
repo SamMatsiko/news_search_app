@@ -1,4 +1,4 @@
-import streamlit as st
+neimport streamlit as st
 import requests
 import pandas as pd
 from io import BytesIO
@@ -38,7 +38,7 @@ def convert_df_to_excel(df):
 st.title("News Search App")
 
 keywords_input = st.text_input("Enter keywords to search for news (separated by spaces or commas):")
-search_type = st.radio("Search in:", ("Article","Headline"),index=1)
+search_type = st.radio("Search in:", ("Headline","Article"),index=1)
 
 if keywords_input:
     keywords = [keyword.strip() for keyword in keywords_input.replace(',', ' ').split()]
