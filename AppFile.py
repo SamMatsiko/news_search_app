@@ -58,6 +58,13 @@ if keyword:
         df = pd.DataFrame(articles_data)
         df=df[df['Source']!='[Removed]']        
         df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]
+
+        # Add a select box for news outlet filter
+        news_outlets = df['Source'].unique().tolist()
+        news_outlet = st.selectbox('Select a news outlet to filter:', ['All'] + news_outlets)
+        
+        if news_outlet != 'All':
+            df = df[df['Source'] == news_outlet]
         
         st.dataframe(df)
 
