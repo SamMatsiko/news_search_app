@@ -58,7 +58,7 @@ if keywords_input:
         } for article in news_results]
         
         
-        df = pd.DataFrame(articles_data)
+        df = pd.DataFrame(articles_data).reset_index()
         df['Published At'] = pd.to_datetime(df['Published At'])
         df['Publication Date'] = df['Published At'].dt.date        
         df=df[df['Source']!='[Removed]']                  
