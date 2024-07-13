@@ -48,11 +48,12 @@ if keywords_input:
     
     if news_results:
         articles_data = [{
+            'Source': article['source']['name'],
+            'Published At': article['publishedAt'],
             'Title': article['title'],
             'Description': article['description'],
-            'URL': article['url'],
-            'Published At': article['publishedAt'],
-            'Source': article['source']['name']            
+            'URL': article['url']           
+                      
         } for article in news_results]
         
         df = pd.DataFrame(articles_data)
