@@ -12,7 +12,7 @@ NEWS_API_URL = 'https://newsapi.org/v2/everything'
 def fetch_news(keywords, search_in_title):
     query = ' AND '.join(keywords)  # Ensure all keywords are present
     params = {
-        'qInTitle' if search_in_title else 'q': query,  # Search in title or anywhere
+        'qInTitle' if search_in_title else 'q': query,  # Search in title or article
         'apiKey': API_KEY,
         'sortBy': 'publishedAt',  # Sort by publication date
         'language': 'en',
@@ -38,15 +38,14 @@ def convert_df_to_excel(df):
 st.title("News Search App")
 
 keywords_input = st.text_input("Enter keywords to search for news (separated by spaces or commas):")
-search_type = st.radio("Search in:", ("Article", "Headline"), index=0)  # Default to "Anywhere" and place it first
+search_type = st.radio("Search in:", ("Article", "Headline"), index=0)  # Default to "Article" and place it first
 
 if keywords_input:
     keywords = [keyword.strip() for keyword in keywords_input.replace(',', ' ').split()]
     st.write(f"Results for keywords in {search_type.lower()}: {', '.join(keywords)}")
     
-    search_in_title = search_type == "Title"
+    search_in_title = search_type == "Headline"
     news_results = fetch_news(keywords, search_in_title)
-    
     if news_results:
         articles_data = [{
             'Source': article['source']['name'],
