@@ -85,16 +85,16 @@ if keywords_input:
                 text-overflow: ellipsis;
             }
             th:nth-child(1), td:nth-child(1) {  /* Title column */
-                width: 200px;
+                width: 30%;
             }
             th:nth-child(2), td:nth-child(2) {  /* Description column */
-                width: 300px;
+                width: 30%;
             }
             th:nth-child(4), td:nth-child(4) {  /* Published At column */
-                white-space: normal;
+                width: 30%;
             }
             th:nth-child(5), td:nth-child(5) {  /* Source column */
-                white-space: normal;
+                width: 30%;
             }
             </style>
             """, unsafe_allow_html=True
