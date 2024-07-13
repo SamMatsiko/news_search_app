@@ -90,7 +90,7 @@ if keywords_input:
 
             }
             th:nth-child(1), td:nth-child(1) {  /* Index */
-                width: 8%;
+                width: 7%;
             }
             th:nth-child(2), td:nth-child(2) {  /* Source */
                 width: 20%;
@@ -105,7 +105,7 @@ if keywords_input:
                 width: 10%;
             }
             th:nth-child(6), td:nth-child(6) {  /* Sentiment */
-                width: 7%;
+                width: 8%;
             }
             
 
