@@ -81,7 +81,7 @@ if keywords_input:
             table {
                 width: 100%;
                 table-layout: fixed;
-                margin:100px;
+                margin:1px;
             }
             th, td {
                 padding: 10px; /* Add padding to table cells */
