@@ -44,7 +44,7 @@ if keywords_input:
     keywords = [keyword.strip() for keyword in keywords_input.replace(',', ' ').split()]
     st.write(f"Results for keywords in {search_type.lower()}: {', '.join(keywords)}")
     
-    search_in_title = search_type == "Title"
+    search_in_title = search_type == "Anywhere"
     news_results = fetch_news(keywords, search_in_title)
 
 
