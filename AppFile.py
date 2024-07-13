@@ -76,6 +76,16 @@ if keywords_input:
         df['URL'] = df['URL'].apply(lambda x: x.replace('news link', '<b>news link</b>'))
         df=df[['Source','Date','Title','URL','Sentiment']]
 
+        # Pagination variables
+        page_size = 10
+        total_pages = (len(df) // page_size) + (1 if len(df) % page_size > 0 else 0)
+        page_number = st.number_input('Page number', min_value=1, max_value=total_pages, value=1)
+        
+        # Paginated DataFrame
+        start_idx = (page_number - 1) * page_size
+        end_idx = start_idx + page_size
+        df_paginated = df[start_idx:end_idx]
+
 
 
         df = df.to_html(escape=False)
