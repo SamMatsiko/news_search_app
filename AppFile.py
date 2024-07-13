@@ -60,7 +60,7 @@ if keywords_input:
         
         df = pd.DataFrame(articles_data)
         df['Published At'] = pd.to_datetime(df['Published At'])
-        df['Publication Date'] = df['Published At'].dt.date        
+        df['PublicationDate'] = df['Published At'].dt.date        
         df=df[df['Source']!='[Removed]']                  
         df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]       
 
@@ -73,8 +73,8 @@ if keywords_input:
         
 
         # Convert URLs to clickable links in the DataFrame
-        df['News Link'] = df['URL'].apply(lambda x: x.replace('news link', '<b>news link</b>'))
-        df=df[['Source','Publication Date','Title','News Link','Sentiment']]
+        df['NewsLink'] = df['URL'].apply(lambda x: x.replace('news link', '<b>news link</b>'))
+        df=df[['Source','PublicationDate','Title','NewsLink','Sentiment']]
         df=df.reset_index(drop=True)
 
         # Pagination variables
