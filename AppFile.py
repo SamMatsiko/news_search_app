@@ -52,7 +52,7 @@ if keywords_input:
             'Published At': article['publishedAt'],
             'Title': article['title'],
             'Description': article['description'],
-            'News URL': article['url']  
+            'News URL': article['url'],
             'URL': f'<a href="{article["url"]}" target="_blank">news link</a>'          
                       
         } for article in news_results]
