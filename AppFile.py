@@ -1,9 +1,10 @@
 import streamlit as st
 import requests
 import pandas as pd
-import matplotlib.pyplot as plt
 from io import BytesIO
 from textblob import TextBlob
+from afinn import Afinn
+import matplotlib.pyplot as plt
 
 # Replace 'your_api_key_here' with your actual NewsAPI key
 API_KEY = '4cf74a050be14bdfaae4f38c7d23cd27'
@@ -25,9 +26,7 @@ def fetch_news(keywords, search_in_title):
         st.error(f"Failed to fetch news articles: {response.json().get('message', 'Unknown error')}")
         return []
 
-def analyze_sentiment(text):
-    blob = TextBlob(text)
-    return blob.sentiment.polarity, blob.sentiment.subjectivity
+afn = Afinn()
 
 def convert_df_to_excel(df):
     output = BytesIO()
@@ -54,12 +53,15 @@ if keywords_input:
             'Description': article['description'],
             'URL': article['url'],
             'Published At': article['publishedAt'],
-            'Source': article['source']['name'],
-            'Sentiment Polarity': analyze_sentiment(article['description'])[0] if article['description'] else None,
-            'Sentiment Subjectivity': analyze_sentiment(article['description'])[1] if article['description'] else None
+            'Source': article['source']['name']            
         } for article in news_results]
         
         df = pd.DataFrame(articles_data)
+        df = pd.DataFrame(articles_data)
+        df=df[df['Source']!='[Removed]']        
+        df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]
+
+
         
         # Add a multiselect for news outlet filter
         news_outlets = df['Source'].unique().tolist()
