@@ -88,37 +88,7 @@ if keywords_input:
         end_idx = start_idx + page_size
         df_paginated = df[start_idx:end_idx]
         
-        # Add CSS style for enlarged table
-        st.markdown(
-            """
-            <style>
-            table {
-                width: 100%;
-                table-layout: fixed;
-                margin: 20px; /* Add margin around the table */
-            }
-            th, td {
-                padding: 10px; /* Add padding to table cells */
-                text-align: left; /* Align text to the left */
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-            th:nth-child(1), td:nth-child(1) {  /* Title column */
-                width: 30%; /* Adjust width as needed */
-            }
-            th:nth-child(2), td:nth-child(2) {  /* Description column */
-                width: 40%; /* Adjust width as needed */
-            }
-            th:nth-child(3), td:nth-child(3) {  /* Published At column */
-                width: 15%; /* Adjust width as needed */
-            }
-            th:nth-child(4), td:nth-child(4) {  /* Source column */
-                width: 15%; /* Adjust width as needed */
-            }
-            </style>
-            """, unsafe_allow_html=True
-        )
+
         
         df_html = df_paginated.to_html(escape=False)
         st.write(df_html, unsafe_allow_html=True)
