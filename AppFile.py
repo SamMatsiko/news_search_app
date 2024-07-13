@@ -81,6 +81,8 @@ if keywords_input:
         total_pages = (len(df) // page_size) + (1 if len(df) % page_size > 0 else 0)
         page_number = st.number_input('Page number', min_value=1, max_value=total_pages, value=1)
         
+        st.write(f"Page {page_number} of {total_pages}")
+
         # Paginated DataFrame
         start_idx = (page_number - 1) * page_size
         end_idx = start_idx + page_size
@@ -118,17 +120,10 @@ if keywords_input:
             """, unsafe_allow_html=True
         )
         
-        df = df_paginated.to_html(escape=False)
-        st.write(df, unsafe_allow_html=True)
+        df_html = df_paginated.to_html(escape=False)
+        st.write(df_html, unsafe_allow_html=True)
 
-
-
-
-
-
-        
-
-
+       
         # Time-series plot of publication dates
         df = pd.DataFrame(articles_data)# Recreate DataFrame for further analysis without HTML tags
         df=df[df['Source']!='[Removed]']        
