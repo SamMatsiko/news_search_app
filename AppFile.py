@@ -84,10 +84,12 @@ if keywords_input:
                 margin:100px;
             }
             th, td {
+                padding: 10px; /* Add padding to table cells */
+                text-align: left; /* Align text to the left */
                 white-space: nowrap;
-                
                 overflow: hidden;
                 text-overflow: ellipsis;
+                
 
             }
             th:nth-child(1), td:nth-child(1) {  /* Index */
