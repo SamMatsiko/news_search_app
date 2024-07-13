@@ -71,9 +71,9 @@ if keywords_input:
 
         # Convert URLs to clickable links in the DataFrame
         df['URL'] = df['URL'].apply(lambda x: x.replace('news link', '<b>news link</b>'))
-        #df = df.to_html(escape=False)
-        #st.write(df, unsafe_allow_html=True)
-        st.dataframe(df)
+        df = df.to_html(escape=False)
+        st.write(df, unsafe_allow_html=True)
+        #st.dataframe(df)
 
 
         # Time-series plot of publication dates
