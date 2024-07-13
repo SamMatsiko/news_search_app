@@ -52,25 +52,26 @@ if keywords_input:
             'Published At': article['publishedAt'],
             'Title': article['title'],
             'Description': article['description'],
-            'URL': article['url']           
+            'URL': f'<a href="{article["url"]}" target="_blank">news link</a>'          
                       
         } for article in news_results]
         
         df = pd.DataFrame(articles_data)
         df = pd.DataFrame(articles_data)
         df=df[df['Source']!='[Removed]']        
-        df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]
-
-
-        
+        df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]        
         # Add a multiselect for news outlet filter
         news_outlets = df['Source'].unique().tolist()
         selected_outlets = st.multiselect('Select news outlets to filter:', ['All'] + news_outlets, default=['All'])
         
         if 'All' not in selected_outlets:
-            df = df[df['Source'].isin(selected_outlets)]
+            df = df[df['Source'].isin(selected_outlets)]     
         
-        st.dataframe(df)
+
+        # Convert URLs to clickable links in the DataFrame
+        df['URL'] = df['URL'].apply(lambda x: x.replace('news link', '<b>news link</b>'))
+        df = df.to_html(escape=False)
+        st.write(df, unsafe_allow_html=True)
 
         # Time-series plot of publication dates
         df['Published At'] = pd.to_datetime(df['Published At'])
