@@ -84,7 +84,7 @@ if keywords_input:
             }
             th, td {
                 white-space: nowrap;
-                font-size:14px;
+                
                 overflow: hidden;
                 text-overflow: ellipsis;
 
@@ -102,7 +102,7 @@ if keywords_input:
                 width: 40%;
             }
             th:nth-child(5), td:nth-child(5) {  /* Sentiment */
-                width: 15%;
+                width: 10%;
             }
             th:nth-child(6), td:nth-child(6) {  /* Sentiment */
                 width: 7%;
