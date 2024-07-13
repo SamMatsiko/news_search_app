@@ -74,7 +74,8 @@ if keywords_input:
 
         # Convert URLs to clickable links in the DataFrame
         df['News Link'] = df['URL'].apply(lambda x: x.replace('news link', '<b>news link</b>'))
-        df=df[['Source','Publication Date','Title','News Link','Sentiment']].reset_index()
+        df=df[['Source','Publication Date','Title','News Link','Sentiment']]
+        df=df.reset_index()
 
         # Pagination variables
         page_size = 10
