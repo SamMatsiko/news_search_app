@@ -62,7 +62,10 @@ if keywords_input:
         df=df[df['Source']!='[Removed]']   
         df=df.drop(columns=['News URL'])
         df=df.drop(columns=['Description'])
-        df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]        
+        df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]       
+        df['Published At'] = pd.to_datetime(df['Published At'])
+        df['Date'] = df['Published At'].dt.date
+        df=df.drop(columns=['Published At'])
         # Add a multiselect for news outlet filter
         news_outlets = df['Source'].unique().tolist()
         selected_outlets = st.multiselect('Select news outlets to filter:', ['All'] + news_outlets, default=['All'])
@@ -82,8 +85,10 @@ if keywords_input:
             }
             th, td {
                 white-space: nowrap;
+                font-size:14px
                 overflow: hidden;
                 text-overflow: ellipsis;
+
             }
             th:nth-child(1), td:nth-child(1) {  /* Index */
                 width: 5%;
