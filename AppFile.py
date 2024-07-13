@@ -84,19 +84,22 @@ if keywords_input:
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
-            th:nth-child(1), td:nth-child(1) {  /* Title column */
+            th:nth-child(1), td:nth-child(1) {  /* Index */
                 width: 10%;
             }
-            th:nth-child(2), td:nth-child(2) {  /* Description column */
+            th:nth-child(2), td:nth-child(2) {  /* Source */
                 width: 30%;
             }
-            th:nth-child(4), td:nth-child(4) {  /* Published At column */
+            th:nth-child(4), td:nth-child(4) {  /* Title */
                 width: 30%;
             }
-            th:nth-child(5), td:nth-child(5) {  /* Source column */
+            th:nth-child(5), td:nth-child(5) {  /* Description */
                 width: 30%;
             }
-            th:nth-child(5), td:nth-child(5) {  /* Sentiment */
+            th:nth-child(5), td:nth-child(6) {  /* URL */
+                width: 30%;
+            }
+            th:nth-child(5), td:nth-child(7) {  /* Sentiment */
                 width: 30%;
             }
             </style>
