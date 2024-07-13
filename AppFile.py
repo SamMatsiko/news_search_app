@@ -76,18 +76,24 @@ if keywords_input:
         df['URL'] = df['URL'].apply(lambda x: x.replace('news link', '<b>news link</b>'))
         df=df[['Source','Date','Title','URL','Sentiment']]
 
-        # Add CSS and JavaScript for paginated table
+        # Pagination variables
+        page_size = 10
+        total_pages = (len(df) // page_size) + (1 if len(df) % page_size > 0 else 0)
+        page_number = st.number_input('Page number', min_value=1, max_value=total_pages, value=1)
+        
+        # Paginated DataFrame
+        start_idx = (page_number - 1) * page_size
+        end_idx = start_idx + page_size
+        df_paginated = df[start_idx:end_idx]
+        
+        # Add CSS style for enlarged table
         st.markdown(
             """
             <style>
-            .table-container {
-                width: 100%;
-                overflow-y: auto;
-                margin: 20px; /* Add margin around the table */
-            }
             table {
                 width: 100%;
                 table-layout: fixed;
+                margin: 20px; /* Add margin around the table */
             }
             th, td {
                 padding: 10px; /* Add padding to table cells */
@@ -109,54 +115,11 @@ if keywords_input:
                 width: 15%; /* Adjust width as needed */
             }
             </style>
-            <script>
-            function paginateTable(tableId, rowsPerPage) {
-                var table = document.getElementById(tableId);
-                var rows = table.getElementsByTagName("tr");
-                var totalRows = rows.length;
-                var pageCount = Math.ceil(totalRows / rowsPerPage);
-                var currentPage = 1;
-
-                function showPage(page) {
-                    var start = (page - 1) * rowsPerPage;
-                    var end = start + rowsPerPage;
-                    for (var i = 0; i < totalRows; i++) {
-                        rows[i].style.display = (i >= start && i < end) ? "" : "none";
-                    }
-                }
-
-                function createPaginationControls() {
-                    var container = document.createElement("div");
-                    container.className = "pagination-controls";
-                    for (var i = 1; i <= pageCount; i++) {
-                        var button = document.createElement("button");
-                        button.textContent = i;
-                        button.addEventListener("click", function(e) {
-                            showPage(parseInt(e.target.textContent));
-                        });
-                        container.appendChild(button);
-                    }
-                    table.parentNode.appendChild(container);
-                }
-
-                showPage(currentPage);
-                createPaginationControls();
-            }
-            </script>
             """, unsafe_allow_html=True
         )
-
-        df_html = df.to_html(escape=False, index=False, classes='news-table')
-        st.markdown(f"""
-        <div class="table-container">
-            {df_html}
-        </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {{
-                paginateTable('news-table', 10);
-            }});
-        </script>
-        """, unsafe_allow_html=True)
+        
+        df = df_paginated.to_html(escape=False)
+        st.write(df, unsafe_allow_html=True)
 
 
 
