@@ -57,7 +57,7 @@ if keywords_input:
                       
         } for article in news_results]
         
-        df = pd.DataFrame(articles_data)
+        
         df = pd.DataFrame(articles_data)
         df=df[df['Source']!='[Removed]']        
         df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]        
@@ -96,10 +96,12 @@ if keywords_input:
 
 
         # Time-series plot of publication dates
-        df = pd.DataFrame(articles_data)  # Recreate DataFrame for further analysis without HTML tags
+        df = pd.DataFrame(articles_data)# Recreate DataFrame for further analysis without HTML tags
+        df=df[df['Source']!='[Removed]']        
+        df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]   
         df['Published At'] = pd.to_datetime(df['Published At'])
         df['Date'] = df['Published At'].dt.date
-        df.loc[:,'Sentiment'] = [afn.score(str(article)) for article in df.loc[:,'Title']]   
+         
         date_counts = df['Date'].value_counts().sort_index()
 
 
