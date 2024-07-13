@@ -42,7 +42,7 @@ st.title("AKAS News Search")
 keyword = st.text_input("Enter a keyword to search for news:")
 
 if keyword:
-    keywords = [keyword.strip() for keyword in keywords_input.replace(',', ' ').split()]
+    keywords = [word.strip() for word in keyword.replace(',', ' ').split()]
     st.write(f"Results for keywords in title: {', '.join(keywords)}")
     news_results = fetch_news(keyword)
     if news_results:
