@@ -96,13 +96,13 @@ if keywords_input:
                 width: 20%;
             }
             th:nth-child(3), td:nth-child(3) {  /* Title */
-                width: 20%;
+                width: 15%;
             }
             th:nth-child(4), td:nth-child(4) {  /* URL */
                 width: 40%;
             }
             th:nth-child(5), td:nth-child(5) {  /* Sentiment */
-                width: 20%;
+                width: 25%;
             }
             th:nth-child(5), td:nth-child(5) {  /* Sentiment */
                 width: 6%;
