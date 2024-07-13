@@ -10,7 +10,7 @@ API_KEY = '4cf74a050be14bdfaae4f38c7d23cd27'
 NEWS_API_URL = 'https://newsapi.org/v2/everything'
 
 def fetch_news(keywords, search_in_title):
-    query = ' AND '.join(keywords)
+    query = ' AND'.join(keywords)
     params = {
         'qInTitle' if search_in_title else 'q': query,  # Search in title or anywhere
         'apiKey': API_KEY,
@@ -24,6 +24,7 @@ def fetch_news(keywords, search_in_title):
     else:
         st.error(f"Failed to fetch news articles: {response.json().get('message', 'Unknown error')}")
         return []
+
 
 afn = Afinn()
 
